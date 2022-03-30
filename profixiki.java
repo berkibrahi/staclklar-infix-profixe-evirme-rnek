@@ -1,0 +1,67 @@
+package profix;
+
+import java.util.Stack;
+
+public class profixiki {	
+	public static int oncelik(char k) {
+	 if(k=='+'||k=='-')
+		 return 1;
+	 if(k=='*'||k=='/')
+		 return 2;
+	 if(k=='^')
+		 return 3;
+	 else
+		 return -1;
+	
+}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Stack<Character> yigin=new Stack<>();
+		String pox="2*3+5-5/2";
+		String c="";
+		 System.out.println(pox);
+		
+			
+		 for(int i=0;i<pox.length();i++) {
+			 char s=pox.charAt(i);
+			
+			  if(s=='+' || s=='-' ||s=='*'||s=='/')
+			  {
+				while(!yigin.empty())   {
+					
+					if( oncelik(yigin.peek())>=oncelik(s)) {
+						
+						
+					c=c+yigin.pop();}
+					else {
+						break;
+						
+					}
+				}	
+					
+					System.out.println("??"+yigin.push(s));
+				
+				  }
+				  
+			  else {
+				 c+=s;
+			  }
+			 
+		 }
+			while(!yigin.empty())
+			{
+				
+				c=c+yigin.pop();
+			}
+		 System.out.println(c);
+		 
+		 
+	}
+	
+
+	}
+
+
